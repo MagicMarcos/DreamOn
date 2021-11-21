@@ -2,7 +2,7 @@ const cloudinary = require('../middleware/cloudinary');
 // Models
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
-const SavedPost = require('../models/savedPost');
+const SavedPost = require('../models/SavedPost');
 // Azure Ai
 const azure = require('../middleware/azure');
 const computerVisionClient = azure.computerVisionClient;
