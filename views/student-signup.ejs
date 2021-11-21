@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') -%>
+  <body>
+    <%- include('partials/s-headers') -%>
+    <main>
+      <!-- Section -->
+      <section class="min-vh-100 d-flex bg-primary align-items-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+              <div class="card bg-primary shadow-soft border-light p-4">
+                <div class="card-header text-center pb-0">
+                  <h2 class="mb-0 h5">Create Account</h2>
+                </div>
+                <div class="card-body">
+                  <form action="/student-signup" method="post">
+                    <!-- Form -->
+                    <div class="form-group">
+                      <label for="exampleInputIcon4">Organization</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><span class="fas fa-signature"></span
+                          ></span>
+                        </div>
+                        <input
+                          class="form-control"
+                          name="name"
+                          id="exampleInputIcon4"
+                          placeholder="name"
+                          type="text"
+                          aria-label="organization name"
+                        />
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="profileType"
+                      value="student"
+                      hidden
+                    />
+
+                    <!-- Form-group -->
+                    <div class="form-group">
+                      <label for="exampleInputIcon4">Your email</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><span class="fas fa-envelope"></span
+                          ></span>
+                        </div>
+                        <input
+                          class="form-control"
+                          id="exampleInputIcon4"
+                          placeholder="example@company.com"
+                          type="text"
+                          aria-label="email adress"
+                          name="email"
+                        />
+                      </div>
+                    </div>
+                    <!-- End of Form -->
+                    <div class="form-group">
+                      <!-- Form -->
+                      <div class="form-group">
+                        <label for="exampleInputPassword7">Password</label>
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"
+                              ><span class="fas fa-unlock-alt"></span
+                            ></span>
+                          </div>
+                          <input
+                            class="form-control"
+                            id="exampleInputPassword7"
+                            placeholder="Password"
+                            type="password"
+                            aria-label="Password"
+                            name="password"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <!-- End of Form -->
+                      <!-- Form -->
+                      <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"
+                              ><span class="fas fa-unlock-alt"></span
+                            ></span>
+                          </div>
+                          <input
+                            class="form-control"
+                            id="confirmPassword"
+                            placeholder="Confirm password"
+                            type="password"
+                            aria-label="Password"
+                            name="confirmPassword"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <!-- End of Form -->
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">
+                      Sign Up
+                    </button>
+                  </form>
+                  <!-- <div class="mt-3 mb-4 text-center">
+                    <span class="font-weight-normal">or</span>
+                  </div> -->
+                  <!-- <div class="btn-wrapper my-4 text-center">
+                    <button
+                      class="btn btn-primary btn-icon-only text-facebook mr-2"
+                      type="button"
+                      aria-label="facebook button"
+                      title="facebook button"
+                    >
+                      <span aria-hidden="true" class="fab fa-facebook-f"></span>
+                    </button>
+                    <button
+                      class="btn btn-primary btn-icon-only text-twitter mr-2"
+                      type="button"
+                      aria-label="twitter button"
+                      title="twitter button"
+                    >
+                      <span aria-hidden="true" class="fab fa-twitter"></span>
+                    </button>
+                    <button
+                      class="btn btn-primary btn-icon-only text-facebook"
+                      type="button"
+                      aria-label="github button"
+                      title="github button"
+                    >
+                      <span aria-hidden="true" class="fab fa-github"></span>
+                    </button>
+                  </div> -->
+                  <div
+                    class="
+                      d-block d-sm-flex
+                      justify-content-center
+                      align-items-center
+                      mt-4
+                    "
+                  >
+                    <span class="font-weight-normal">
+                      Already have an account?
+                      <a href="/login" class="font-weight-bold">Login here</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- <footer>
+      <div class="myLinks">
+        <a href="https://github.com/MagicMarcos"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://marcoscardoso.netlify.app/"
+          ><i class="fas fa-laptop-code"></i
+        ></a>
+        <a href="https://twitter.com/home"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/feed/"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+      </div>
+    </footer> -->
+    <%- include('partials/scripts') -%>
+  </body>
+</html>

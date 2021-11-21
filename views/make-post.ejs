@@ -1,0 +1,121 @@
+<html lang="en">
+  <%- include('partials/head') -%>
+  <body>
+    <!-- header -->
+    <%- include('partials/r-headers') -%>
+    <main>
+      <!-- Section -->
+      <section class="min-vh-100 d-flex bg-primary align-items-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+              <div class="card bg-primary shadow-soft border-light p-4">
+                <div class="card-header text-center pb-0">
+                  <h2 class="h4">Submit a Scholarship</h2>
+                </div>
+                <div class="card-body">
+                  <form
+                    action="/post/makePost"
+                    enctype="multipart/form-data"
+                    method="POST"
+                    class="mt-4"
+                  >
+                    <div class="form-group">
+                      <div class="custom-file">
+                        <input
+                          type="file"
+                          name="file"
+                          class="custom-file-input fileUpload"
+                          id="customFile"
+                          aria-label="File upload"
+                          required
+                        />
+                        <label class="custom-file-label" for="customFile"
+                          >Choose file</label
+                        >
+                      </div>
+                    </div>
+
+                    <!-- Ship Name -->
+                    <div class="form-group">
+                      <label for="exampleInputIcon3">Scholarship Name</label>
+                      <div class="input-group mb-4">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="title"
+                          id="title"
+                          placeholder="Scholarship Name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="form-group">
+                      <!-- Form -->
+                      <div class="form-group">
+                        <label for="exampleInputPassword6"
+                          >Brief Description</label
+                        >
+                        <div class="input-group mb-4">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="caption"
+                            id="caption"
+                            placeholder="Brief description"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Link -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputPassword6"
+                          >Link to Scholarship</label
+                        >
+                        <div class="input-group mb-4">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="scholarshipLink"
+                            placeholder="Link to Scholarship"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <!-- due date -->
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="exampleInputPassword6"
+                          >Application Deadline</label
+                        >
+                        <div class="input-group mb-4">
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="expiryDate"
+                            placeholder="Link to Scholarship"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer -->
+    <%- include('partials/footer') -%>
+    <!-- scripts -->
+    <%- include('partials/scripts') -%>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head') -%>
+  <body>
+    <%- include('partials/r-headers') -%>
+    <!-- !Hidden form -->
+    <form action="../savepost/savepost" method="POST" id="savePostForm">
+      <input
+        type="text"
+        name="providerName"
+        value="<%= post.userName %> "
+        hidden
+      />
+
+      <input type="text" name="postId" value="<%= post._id%>" hidden />
+      <input type="text" name="postedBy" value="<%= post.postedBy%>" hidden />
+      <input
+        type="text"
+        class="form-control"
+        name="expiryDate"
+        value="<%= post.expirationDate%>"
+        hidden
+      />
+      <input
+        type="text"
+        class="form-control"
+        name="DACA"
+        value="<%= post.DACA%>"
+        hidden
+      />
+      <div class="d-flex justify-content-start">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            placeholder="Scholarship Name"
+            value="<%= post.title %>"
+            hidden
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="caption"
+            placeholder="Brief description"
+            value="<%= post.caption%>"
+            hidden
+          />
+        </div>
+      </div>
+    </form>
+    <!-- !end hidden form -->
+
+    <div class="section mt-5 mt-sm-0 bg-primary text-dark section-lg">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 mb-5">
+            <div class="card bg-primary border-light shadow-soft">
+              <div>
+                <div
+                  class="
+                    col
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    mt-3
+                    px-4
+                  "
+                >
+                  <a href="/post/<%= post._id %>">
+                    <h3 class="h4 card-title mb-0"><%= post.title %></h3>
+                  </a>
+                  <%if(post.DACA){%>
+                  <img
+                    src="/img/daca<%=post.DACA%>.png"
+                    class="dacaAlert"
+                    alt=""
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="DACA friendly"
+                  />
+                  <%} else{%>
+                  <img
+                    src="/img/daca<%=post.DACA%>.png"
+                    class="dacaAlert"
+                    alt=""
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="not DACA friendly"
+                  />
+                  <%}%>
+                </div>
+                <!-- <div class="col text-center">
+                  <h2 class="h5 mt-4"><%= post.title %></h2>
+                </div> -->
+              </div>
+              <div
+                class="card-header p-3 overflow-hidden"
+                style="max-height: 600px"
+              >
+                <a href="<%= post.image %>">
+                  <img
+                    src="<%= post.image %>"
+                    class="card-img-top rounded"
+                    alt="scholarship"
+                  />
+                </a>
+              </div>
+              <div class="card-body pt-2">
+                <div
+                  class="
+                    media
+                    d-flex
+                    align-items-center
+                    justify-content-between
+                  "
+                >
+                  <!-- <div class="post-group">
+                      <a
+                        href="#"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                        data-original-title="23k followers"
+                      >
+                        <img
+                          class="avatar-sm mr-2 img-fluid rounded-circle"
+                          src="../../assets/img/team/profile-picture-2.jpg"
+                          alt="Jo portrait"
+                        />
+                        Jo J. Moore
+                      </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <span class="small"
+                        ><span class="far fa-calendar-alt mr-2"></span>15 March
+                        2020</span
+                      >
+                    </div> -->
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <% if (post.postedBy == user._id) {%>
+                  <a href="/provider-profile %>">
+                    <h3 class="h5 card-title mt-4"><%= post.userName %></h3>
+                  </a>
+
+                  <%} else {%>
+                  <a href="/page/<%= post.postedBy %>"
+                    ><h3 class="h5 card-title mt-4"><%= post.userName %></h3></a
+                  >
+                  <%}%>
+                  <span class="card-text small"
+                    ><span class="far fa-calendar-alt mr-2"></span>Apply by: <%=
+                    post.expirationDate %></span
+                  >
+                </div>
+                <!-- caption -->
+                <p class="card-text"><%= post.caption%></p>
+                <% if (user.profileType === "student") { %>
+                <button
+                  class="btn btn-primary btn-sm"
+                  type="submit"
+                  form="savePostForm"
+                >
+                  Save
+                </button>
+                <%}%>
+              </div>
+            </div>
+            <!-- !Comments -->
+            <div class="card-body">
+              <div>
+                <h3 class="d-inline mr-2">Comments</h3>
+                <span class="far fa-comments mr-2"> <%=comments.length%></span>
+              </div>
+
+              <form action="/comment/<%= post._id %>" method="POST">
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="comment"
+                    name="comment"
+                  />
+                  <input
+                    type="text"
+                    name="expirationDate"
+                    value="<%= post.expirationDate %> "
+                    hidden
+                  />
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    id="button-addon2"
+                  >
+                    Comment
+                  </button>
+                </div>
+              </form>
+              <%comments.forEach(comment => {%>
+              <p class="col-12">
+                <strong class="<%= comment.profileType%>"
+                  ><%= comment.userName %></strong
+                >
+                <%= comment.comment%>
+              </p>
+              <%})%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/footer') -%> <%- include('partials/scripts') -%>
+  </body>
+</html>

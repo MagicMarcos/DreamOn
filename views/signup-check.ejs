@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head') -%>
+  <body>
+    <%- include('partials/s-headers') -%>
+    <main>
+      <div
+        class="
+          section-header
+          pb-6
+          bg-primary
+          overflow-hidden
+          text-center
+          border-light
+        "
+      ></div>
+      <div class="section section-lg pt-0">
+        <div class="container">
+          <div class="col-12">
+            <div
+              class="
+                card
+                bg-primary
+                shadow-soft
+                border-light
+                px-4
+                py-5
+                text-center
+                mb-5
+              "
+            >
+              <div class="card-header pb-0">
+                <h2 class="h1 mb-3">Are you a Student or Provider</h2>
+              </div>
+              <div class="card-body pt-2 px-0 px-lg-7">
+                <p class="mb-5 lead">
+                  Find the resources to help you keep dream or help provide the
+                  path for success to dreamers across America
+                </p>
+                <a
+                  class="btn btn-lg btn-primary mr-md-4 mb-3 mb-sm-0"
+                  href="/student-signup"
+                >
+                  <div class="d-flex align-items-center">
+                    <span class="icon icon-lg mr-3"
+                      ><span class="fas fa-user-graduate"></span
+                    ></span>
+                    <div class="d-block text-left">
+                      <div class="h5 mb-0">Students</div>
+                      <small class="font-small">search scholarships</small>
+                    </div>
+                  </div>
+                </a>
+                <a class="btn btn-lg btn-primary" href="/signup">
+                  <div class="d-flex align-items-center">
+                    <span class="icon icon-lg mr-3"
+                      ><span class="fas fa-user"></span
+                    ></span>
+                    <div class="d-block text-left">
+                      <div class="h5 mb-0">Providers</div>
+                      <small class="font-small">upload scholarships</small>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="
+                  d-block d-sm-flex
+                  justify-content-center
+                  align-items-center
+                  mt-4
+                "
+              >
+                <span class="font-weight-normal">
+                  Already have an account?
+                  <a href="/login" class="font-weight-bold">Login here</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- !OLD================================================================= -->
+    <!-- <main class="container">
+      <div>
+        <div class="d-flex justify-content-center align-items-center my-3">
+          <a class="btn btn-primary mx-2" href="/student-signup" role="button"
+            >Student SignUp</a
+          >
+          <a class="btn btn-primary mx-2" href="/signup" type="button"
+            >Provider SignUp</a
+          >
+        </div>
+      </div>
+    </main> -->
+    <%- include('partials/scripts') -%>
+  </body>
+</html>

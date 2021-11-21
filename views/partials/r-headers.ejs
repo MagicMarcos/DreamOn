@@ -1,0 +1,90 @@
+<header class="header-global">
+  <nav
+    id="navbar-main"
+    aria-label="Primary navigation"
+    class="
+      navbar navbar-main navbar-expand-lg navbar-theme-primary
+      headroom
+      navbar-light navbar-transparent navbar-theme-primary
+    "
+  >
+    <div class="container position-relative">
+      <a
+        class="
+          navbar-brand
+          shadow-soft
+          px-2
+          rounded
+          border border-light
+          mr-lg-4
+        "
+        href="/"
+      >
+        <img
+          src="/img/dLogo.png"
+          style="width: 100px; height: 50px"
+          alt="Logo dark"
+        />
+      </a>
+
+      <div
+        class="d-flex text-center justify-content-center align-items-center"
+        role="contentinfo"
+      >
+        <ul class="d-flex list-unstyled mb-0">
+          <% if(user){ %>
+          <li class="mr-2">
+            <a
+              href="/<%=user.profileType%>-profile"
+              class="btn btn-icon-only btn-pill btn-primary"
+              aria-label="profile page"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Profile"
+            >
+              <span aria-hidden="true" class="fas fa-user"></span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/logout"
+              class="btn btn-icon-only btn-pill btn-primary"
+              aria-label="logout"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Log Out"
+            >
+              <span aria-hidden="true" class="fa fa-sign-out-alt"></span>
+            </a>
+          </li>
+          <%} else {%>
+          <li class="mr-2">
+            <a
+              href="/signup-check"
+              class="btn btn-icon-only btn-pill btn-primary"
+              aria-label="signup"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Sign Up"
+            >
+              <span aria-hidden="true" class="fas fa-user-plus"></span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/login"
+              class="btn btn-icon-only btn-pill btn-primary"
+              aria-label="login"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Log In"
+            >
+              <span aria-hidden="true" class="fa fa-sign-in-alt"></span>
+            </a>
+          </li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
