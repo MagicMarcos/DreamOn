@@ -61,11 +61,22 @@
                   <div
                     class="d-flex align-items-center justify-content-between"
                   >
+                    <%if(user){%>
                     <a
                       href="/post/<%= post._id %>"
                       class="btn btn-primary btn-sm mr-3"
                       >Learn More</a
+                    ><%} else {%>
+                    <a
+                      href="/login"
+                      class="btn btn-primary btn-sm mr-3"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="LogIn to Learn More"
+                      >Learn More</a
                     >
+                    <%}%>
+
                     <span class="card-text small"
                       ><span class="far fa-calendar-alt mr-2"></span>Apply by:
                       <%= post.expirationDate %></span
