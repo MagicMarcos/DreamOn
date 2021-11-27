@@ -11,5 +11,7 @@ cfg.twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 cfg.twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 cfg.phoneNum = process.env.number;
+
+cfg.notification = process.env.notification;
 // Export configuration object
 module.exports = cfg;
