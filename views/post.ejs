@@ -16,6 +16,12 @@
       <input type="text" name="postedBy" value="<%= post.postedBy%>" hidden />
       <input
         type="text"
+        name="scholarshipLink"
+        value="<%= post.scholarshipLink%>"
+        hidden
+      />
+      <input
+        type="text"
         class="form-control"
         name="expiryDate"
         value="<%= post.expirationDate%>"
@@ -156,9 +162,15 @@
                 </div>
                 <!-- caption -->
                 <p class="card-text"><%= post.caption%></p>
+                <a
+                  href="<%=post.scholarshipLink%>"
+                  target="_blank"
+                  class="btn btn-primary btn-sm"
+                  >View Source</a
+                >
                 <% if (user.profileType === "student") { %>
                 <button
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-primary btn-sm ml-2"
                   type="submit"
                   form="savePostForm"
                 >

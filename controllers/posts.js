@@ -4,9 +4,12 @@ const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 const SavedPost = require('../models/SavedPost');
 // Azure Ai
-const azure = require('../middleware/azure');
-const computerVisionClient = azure.computerVisionClient;
-const sleep = azure.sleep;
+const azureAi = require('../middleware/azure');
+// const computerVisionClient = azure.computerVisionClient;
+// const sleep = azure.sleep;
+// Twilio
+const cfg = require('../config/twilio');
+const moment = require('moment');
 module.exports = {
   // !profiles
   // provider profile
@@ -68,111 +71,59 @@ module.exports = {
   // post scholarship
   createPost: async (req, res) => {
     try {
-      let user = req.user._id;
-      let userName = req.user.name;
-
+      const user = req.user._id;
+      const userName = req.user.name;
+      const scholarshipLink = req.body.scholarshipLink;
       const expirationDate = req.body.expiryDate;
       const expireAt = new Date(req.body.expiryDate);
-      console.log('DATE:', new Date(req.body.expiryDate));
       const result = await cloudinary.uploader.upload(req.file.path);
       const brandURLImage = result.secure_url;
-      let DACA = 0;
-      let check;
 
-      // !AI checks for DACA
-      // URL images containing printed and/or handwritten text.
-      // The URL can point to image files (.jpg/.png/.bmp) or multi-page files (.pdf, .tiff).
-      const printedTextSampleURL = brandURLImage;
-      // Status strings returned from Read API. NOTE: CASING IS SIGNIFICANT.
-      // Before Read 3.0, these are "Succeeded" and "Failed"
-      const STATUS_SUCCEEDED = 'succeeded';
-      const STATUS_FAILED = 'failed';
-      // Recognize text in printed image from a URL
-      console.log(
-        'Read printed text from URL...',
-        printedTextSampleURL.split('/').pop()
-      );
-      const printedResult = await readTextFromURL(
-        computerVisionClient,
-        printedTextSampleURL
-      );
-      printRecText(printedResult);
+      if (
+        scholarshipLink.toLowerCase()[0] === 'h' &&
+        scholarshipLink.toLowerCase().includes('http')
+      ) {
+        let DACA = await azureAi(brandURLImage);
 
-      // Prints all text from Read result
-      function printRecText(readResults) {
-        console.log('Recognized text:');
-        for (const page in readResults) {
-          if (readResults.length > 1) {
-            console.log(`==== Page: ${page}`);
-          }
-          const result = readResults[page];
-          check = result;
-
-          if (result.lines.length) {
-            for (const line of result.lines) {
-              console.log('map result', line.words.map(w => w.text).join(' '));
-            }
-          } else {
-            console.log('No recognized text.');
-          }
-        }
+        await Post.create({
+          expireAt: new Date(expireAt),
+          expirationDate: expirationDate,
+          title: req.body.title,
+          caption: req.body.caption,
+          image: result.secure_url,
+          cloudinaryId: result.public_id,
+          userName: userName,
+          postedBy: user,
+          DACA: DACA,
+          scholarshipLink: scholarshipLink,
+        });
+        console.log('Post has been added!');
+        res.redirect('/provider-profile');
+      } else {
+        res.redirect('/make-post');
       }
-      // Perform read and await the result from URL
-      async function readTextFromURL(client, url) {
-        // To recognize text in a local image, replace client.read() with readTextInStream() as shown:
-        let result = await client.read(url);
-        // Operation ID is last path segment of operationLocation (a URL)
-        let operation = result.operationLocation.split('/').slice(-1)[0];
-
-        // Wait for read recognition to complete
-        // result.status is initially undefined, since it's the result of read
-        while (result.status !== STATUS_SUCCEEDED) {
-          await sleep(1000);
-          result = await client.getReadResult(operation);
-        }
-        return result.analyzeResult.readResults; // Return the first page of result. Replace [0] with the desired page if this is a multi-page file such as .pdf or .tiff.
-      }
-
-      const resultingArr = check.lines;
-      resultingArr.forEach(line => {
-        if (line.text.includes('DACA')) {
-          console.log('DACAFOUND!');
-          DACA = 1;
-        }
-        // else {
-        //   console.log('NO DACA');
-        // }
-      });
-
-      await Post.create({
-        expireAt: new Date(expireAt),
-        expirationDate: expirationDate,
-        title: req.body.title,
-        caption: req.body.caption,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
-        userName: userName,
-        postedBy: user,
-        DACA: DACA,
-      });
-      // TODo may need to await Post.createIndex
-      // Post.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
-      console.log('Post has been added!');
-      res.redirect('/provider-profile');
     } catch (err) {
       console.log(err);
     }
   },
   // !Save post
   createSavedPost: async (req, res) => {
-    let user = req.user._id;
-    let userName = req.user.email;
-    let postId = req.body.postId;
-    let providerName = req.body.providerName;
-    let postedBy = req.body.postedBy;
-    let expirationDate = req.body.expiryDate;
-    let DACA = req.body.DACA;
     try {
+      const user = req.user._id;
+      const userName = req.user.email;
+      const name = req.user.name;
+      // other phone numbers not supported with current twilio account
+      const phoneNumber = req.user.phoneNumber;
+      // one week in minutes (app alerts users 1 week before due date) -> not being used for demo day
+      const notification = 10080;
+      const postId = req.body.postId;
+      const providerName = req.body.providerName;
+      const postedBy = req.body.postedBy;
+      const expirationDate = req.body.expiryDate;
+      const DACA = req.body.DACA;
+      const time = moment(expirationDate);
+      const scholarshipLink = req.body.scholarshipLink;
+
       await SavedPost.create({
         title: req.body.title,
         caption: req.body.caption,
@@ -183,6 +134,13 @@ module.exports = {
         savedBy: user,
         DACA: Number(DACA),
         expirationDate: expirationDate,
+        name: name,
+        // other phone numbers not supported with current twilio account
+        phoneNumber: cfg.phoneNum,
+        // change notification number based on the difference consoled
+        notification: 305,
+        time: time,
+        scholarshipLink: scholarshipLink,
       });
       console.log('Post has been added!');
       res.redirect(`/student-profile`);
@@ -198,39 +156,20 @@ module.exports = {
     try {
       await Comment.create({
         expireAt: new Date(expireAt),
-        // expirationDate: expirationDate,
         comment: req.body.comment,
         postId: postId,
         userName: userName,
         profileType: profileType,
       });
-      // TODo may need to await Post.createIndex
-      // Post.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
       console.log('Post has been added!');
       res.redirect(`/post/${postId}`);
     } catch {}
   },
-  // *sample put
-  // likePost: async (req, res) => {
-  //   try {
-  //     await Post.findOneAndUpdate(
-  //       { _id: req.params.id },
-  //       {
-  //         $inc: { likes: 1 },
-  //       }
-  //     );
-  //     console.log('Likes +1');
-  //     res.redirect(`/post/${req.params.id}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
+
   // !delete
+  // student post delete
   deletePost: async (req, res) => {
     try {
-      // Find post by id
-      let post = await SavedPost.findById({ _id: req.params.id });
-
       // Delete post from db
       await SavedPost.remove({ _id: req.params.id });
       console.log('Deleted Post');
@@ -240,6 +179,7 @@ module.exports = {
       res.redirect(`/student-profile`);
     }
   },
+  // provider post delete
   deleteProvPost: async (req, res) => {
     try {
       // Find post by id
@@ -247,6 +187,7 @@ module.exports = {
 
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(post.cloudinaryId);
+
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log('Deleted Post');
@@ -256,4 +197,19 @@ module.exports = {
       res.redirect(`/provider-profile`);
     }
   },
+  // *sample put request
+  // likePost: async (req, res) => {
+  //   try {
+  //     await Post.findOneAndUpdate(
+  //       { _id: req.params.id },
+  //       {
+  //         $inc: { count: 1 },
+  //       }
+  //     );
+  //
+  //     res.redirect(`/post/${req.params.id}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
 };

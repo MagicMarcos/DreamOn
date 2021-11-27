@@ -9,6 +9,16 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+              <% if (locals.messages.errors) { %>
+              <div>
+                <% messages.errors.forEach(el=>{%>
+                <div class="alert alert-danger shadow-inset"><%= el.msg %></div>
+                <% }) %>
+              </div>
+              <% } %> <% if (locals.messages.info) { %> <%
+              messages.info.forEach( el => { %>
+              <div class="alert alert-info"><%= el.msg %></div>
+              <% }) %> <% } %>
               <div class="card bg-primary shadow-soft border-light p-4">
                 <div class="card-header text-center pb-0">
                   <h2 class="h4">Sign in to our platform</h2>

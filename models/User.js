@@ -2,10 +2,12 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  name: { type: String, unique: true },
+  // TODO change name to not unique
+  name: { type: String },
   profileType: { type: String },
   email: { type: String, unique: true },
   password: String,
+  phoneNumber: { type: String, unique: true },
 });
 
 // Password hash middleware.

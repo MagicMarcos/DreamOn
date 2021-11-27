@@ -11,8 +11,9 @@ const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
 const postRoutes = require('./routes/posts');
 const saveRoutes = require('./routes/saveposts');
-
 const pageRoutes = require('./routes/page');
+
+const scheduler = require('./scheduler');
 
 //Use .env file in config folder
 require('dotenv').config({ path: './config/.env' });
@@ -67,3 +68,6 @@ app.use('/savepost', saveRoutes);
 app.listen(process.env.PORT, () => {
   console.log('Server is running, you better catch it!');
 });
+
+//starts message schedulers
+scheduler.start();

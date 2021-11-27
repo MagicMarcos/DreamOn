@@ -72,6 +72,7 @@ exports.getStudentSignup = (req, res) => {
   });
 };
 
+// Provider Sign up
 exports.postSignup = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
@@ -96,6 +97,7 @@ exports.postSignup = (req, res, next) => {
     profileType: req.body.profileType,
     email: req.body.email,
     password: req.body.password,
+    phoneNumber: '7777777777',
   });
 
   User.findOne(
@@ -125,6 +127,7 @@ exports.postSignup = (req, res, next) => {
   );
 };
 
+// Student Sign Up
 exports.postStudentSignup = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
@@ -149,6 +152,7 @@ exports.postStudentSignup = (req, res, next) => {
     profileType: req.body.profileType,
     email: req.body.email,
     password: req.body.password,
+    phoneNumber: req.body.phoneNumber,
   });
 
   User.findOne(
