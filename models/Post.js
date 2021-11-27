@@ -14,6 +14,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  scholarshipLink: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
     require: true,

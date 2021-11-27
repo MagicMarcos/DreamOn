@@ -9,12 +9,22 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+              <% if (locals.messages.errors) { %>
+              <div class="mt-5">
+                <% messages.errors.forEach(el=>{%>
+                <div class="alert alert-danger shadow-inset"><%= el.msg %></div>
+                <% }) %>
+              </div>
+              <% } %> <% if (locals.messages.info) { %> <%
+              messages.info.forEach( el => { %>
+              <div class="alert alert-info"><%= el.msg %></div>
+              <% }) %> <% } %>
               <div class="card bg-primary shadow-soft border-light p-4">
                 <div class="card-header text-center pb-0">
                   <h2 class="mb-0 h5">Create Account</h2>
                 </div>
                 <div class="card-body">
-                  <form action="/signup" method="post">
+                  <form action="/student-signup" method="post">
                     <!-- Form -->
                     <div class="form-group">
                       <label for="exampleInputIcon4">Organization</label>
@@ -32,15 +42,16 @@
                           type="text"
                           aria-label="organization name"
                         />
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="profileType"
-                          value="provider"
-                          hidden
-                        />
                       </div>
                     </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="profileType"
+                      value="provider"
+                      hidden
+                    />
+
                     <!-- Form-group -->
                     <div class="form-group">
                       <label for="exampleInputIcon4">Your email</label>
