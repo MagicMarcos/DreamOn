@@ -4,17 +4,47 @@
   <body>
     <%- include('partials/s-headers') -%>
     <main>
-      <div
+            <div class="container-fluid shadow-soft  border-light ">
+        <div class="container">
+          <div class="row">
+          <div class="col text-center hero d-flex justify-content-start align-items-center">
+             
+            <h2 class="h1 text-soft mb-0">Welcome Dreamers</h2>
+              
+            </div>
+            </div>
+        </div>
+      </div>
+           <section class="section section-lg pt-5 pb-2">
+            <div class="container">
+                <div class="row align-items-center justify-content-around">
+                    <div class="col-md-6 col-xl-6 mb-5">
+                        <div class="card bg-primary shadow-soft border-light organic-radius p-3">
+                            <img class="organic-radius img-fluid" src="img/dream-display.png" alt="modern desk">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-5 text-center text-md-left">
+                        <h2 class="h1 mb-4">Harness the power of AI to find Scholarships</h2>
+                        <p class="lead">Deferred Action for Childhood Arrivals (DACA) is a program that grants work permits and immigratory relief for children who would otherwise be undocumented in this country.</p>
+                        <p class="lead">Due to their status, finding financial aid and scholarships is not always simple. DreamOn seeks to facilitate this process with the help of AI.</p>
+                        <p class="lead">Sign up as a student or provider and DreamOn.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+      <!-- <div
         class="
           section-header
+          pt-0
           pb-6
           bg-primary
           overflow-hidden
           text-center
           border-light
         "
-      ></div>
-      <div class="section section-lg pt-0">
+      ></div> -->
+
+      <div class="section section-lg pt-5 pb-2">
         <div class="container">
           <div class="col-12">
             <div
@@ -29,16 +59,13 @@
                 mb-5
               "
             >
-              <div class="card-header pb-0">
-                <h2 class="h1 mb-3">Are you a Student or Provider</h2>
+              <div class="card-header  pb-0">
+                <h2 class="h1 mb-3">Are you a Student or Provider?</h2>
               </div>
               <div class="card-body pt-2 px-0 px-lg-7">
-                <p class="mb-5 lead">
-                  Find the resources to help you keep dream or help provide the
-                  path for success to dreamers across America
-                </p>
+               
                 <a
-                  class="btn btn-lg btn-primary mr-md-4 mb-3 mb-sm-0"
+                  class="btn btn-lg btn-primary rounded mr-md-4 mb-3 mb-sm-0"
                   href="/student-signup"
                 >
                   <div class="d-flex align-items-center">
@@ -51,7 +78,7 @@
                     </div>
                   </div>
                 </a>
-                <a class="btn btn-lg btn-primary mt-3 mt-md-0" href="/signup">
+                <a class="btn btn-lg btn-primary rounded mt-3 mt-md-0" href="/signup">
                   <div class="d-flex align-items-center">
                     <span class="icon icon-lg mr-3"
                       ><span class="fas fa-user color-rose"></span
@@ -84,6 +111,7 @@
       </div>
     </main>
 
+    <%- include('partials/footer') -%>
     <%- include('partials/scripts') -%>
   </body>
 </html>

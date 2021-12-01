@@ -19,7 +19,7 @@
           border border-light
           mr-lg-4
         "
-        href="/"
+        href="/feed"
       >
         <img
           src="/img/dLogo.png"
@@ -34,6 +34,20 @@
       >
         <ul class="d-flex list-unstyled mb-0">
           <% if(user){ %>
+             <%if(user.profileType === "provider") {%>
+          <li class="mr-2">
+            <a
+              href="/make-post"
+              class="btn btn-icon-only btn-pill btn-primary color-green"
+              aria-label="makepost"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Submit a Scholarship"
+            >
+              <span aria-hidden="true" class="fa fa-plus"></span>
+            </a>
+          </li>
+          <%}%>
           <li class="mr-2">
             <a
               href="/<%=user.profileType%>-profile"

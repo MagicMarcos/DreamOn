@@ -39,7 +39,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/');
+      res.redirect(req.session.returnTo || '/feed');
     });
   })(req, res, next);
 };
@@ -120,7 +120,7 @@ exports.postSignup = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect('/');
+          res.redirect('/feed');
         });
       });
     }
@@ -175,7 +175,7 @@ exports.postStudentSignup = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect('/');
+          res.redirect('/feed');
         });
       });
     }

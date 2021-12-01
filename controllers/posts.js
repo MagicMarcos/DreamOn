@@ -13,6 +13,15 @@ const cfg = require('../config/twilio');
 const moment = require('moment');
 
 module.exports = {
+  // !feed 
+    getFeed: async (req, res) => {
+    try {
+      const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
+      res.render('feed.ejs', { user: req.user, posts: posts });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   // !profiles
   // provider profile
   getProfile: async (req, res) => {

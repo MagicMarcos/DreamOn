@@ -7,12 +7,13 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 //Main Routes - simplified for now
 router.get('/', homeController.getIndex);
+
 // provider profile
 router.get('/provider-profile', ensureAuth, postsController.getProfile);
 // student profile
 router.get('/student-profile', ensureAuth, postsController.getStudentProfile);
-// TODO guest page
-// make post page
+
+// post page
 router.get('/make-post', ensureAuth, postsController.getMakePost);
 // signup check
 router.get('/signup-check', postsController.getSignUpCheck);
@@ -28,6 +29,8 @@ router.post('/signup', authController.postSignup);
 router.get('/student-signup', authController.getStudentSignup);
 router.post('/student-signup', authController.postStudentSignup);
 
-// TODO student sign up
+// feed
+router.get('/feed', ensureAuth,  postsController.getFeed);
+
 
 module.exports = router;
