@@ -59,10 +59,11 @@ const SavedPostSchema = new mongoose.Schema({
 
 // defining methods and statics
 SavedPostSchema.methods.requiresNotification = function (date) {
+  console.log(this.title)
   console.log('requiredNofication method', this.notification);
   console.log('current date param', date)
   console.log('this.time', this.time)
-  console.log(this.title)
+  
   console.log(
     'difference',
     Math.round(
@@ -71,13 +72,19 @@ SavedPostSchema.methods.requiresNotification = function (date) {
         .asMinutes()
     )
   );
-  return (
-    Math.round(
-      moment
-        .duration(moment(this.time).utc().diff(moment(date).utc()))
-        .asMinutes()
-    ) === this.notification
-  );
+
+  // !demo purposes only
+  return this.notification === 5
+
+  //!production code
+  // return (
+  //   Math.round(
+  //     moment
+  //       .duration(moment(this.time).utc().diff(moment(date).utc()))
+  //       .asMinutes()
+  //   ) === this.notification
+  // );
+  
 };
 SavedPostSchema.statics.sendNotifications = function (callback) {
   // now
