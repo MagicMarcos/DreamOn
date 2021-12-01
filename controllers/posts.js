@@ -150,8 +150,8 @@ module.exports = {
         name: name,
         // *other phone numbers not supported with current twilio account
         phoneNumber: cfg.phoneNum,
-        // *change notification number based on the difference consoled
-        notification: cfg.notification,
+    
+        notification: notification,
         time: time,
         scholarshipLink: scholarshipLink,
       });
