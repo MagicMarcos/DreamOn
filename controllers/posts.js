@@ -1,15 +1,17 @@
 const cloudinary = require('../middleware/cloudinary');
+
 // Models
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 const SavedPost = require('../models/SavedPost');
+
 // Azure Ai
 const azureAi = require('../middleware/azure');
-// const computerVisionClient = azure.computerVisionClient;
-// const sleep = azure.sleep;
+
 // Twilio
 const cfg = require('../config/twilio');
 const moment = require('moment');
+
 module.exports = {
   // !profiles
   // provider profile
@@ -23,6 +25,7 @@ module.exports = {
       console.log(err);
     }
   },
+
   // student profile
   getStudentProfile: async (req, res) => {
     try {
@@ -34,7 +37,7 @@ module.exports = {
       console.log(err);
     }
   },
-  // guest profile
+
   // !signup check
   getSignUpCheck: async (req, res) => {
     try {
@@ -44,7 +47,7 @@ module.exports = {
     }
   },
 
-  // !post page
+  // !individual post page
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -59,7 +62,7 @@ module.exports = {
       console.log(err);
     }
   },
-  // !signup check
+  // !make post page
   getMakePost: async (req, res) => {
     try {
       res.render('make-post.ejs', { user: req.user });
@@ -67,8 +70,8 @@ module.exports = {
       console.log(err);
     }
   },
+
   // !create posts
-  // post scholarship
   createPost: async (req, res) => {
     try {
       const user = req.user._id;
@@ -106,15 +109,16 @@ module.exports = {
       console.log(err);
     }
   },
+
   // !Save post
   createSavedPost: async (req, res) => {
     try {
       const user = req.user._id;
       const userName = req.user.email;
       const name = req.user.name;
-      // other phone numbers not supported with current twilio account
+      // *other phone numbers not supported with current twilio account
       const phoneNumber = req.user.phoneNumber;
-      // one week in minutes (app alerts users 1 week before due date) -> not being used for demo day
+      // *one week in minutes (app alerts users 1 week before due date) -> not being used for demo day
       const notification = 10080;
       const postId = req.body.postId;
       const providerName = req.body.providerName;
@@ -135,9 +139,9 @@ module.exports = {
         DACA: Number(DACA),
         expirationDate: expirationDate,
         name: name,
-        // other phone numbers not supported with current twilio account
+        // *other phone numbers not supported with current twilio account
         phoneNumber: cfg.phoneNum,
-        // change notification number based on the difference consoled
+        // *change notification number based on the difference consoled
         notification: cfg.notification,
         time: time,
         scholarshipLink: scholarshipLink,
@@ -197,19 +201,4 @@ module.exports = {
       res.redirect(`/provider-profile`);
     }
   },
-  // *sample put request
-  // likePost: async (req, res) => {
-  //   try {
-  //     await Post.findOneAndUpdate(
-  //       { _id: req.params.id },
-  //       {
-  //         $inc: { count: 1 },
-  //       }
-  //     );
-  //
-  //     res.redirect(`/post/${req.params.id}`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
 };

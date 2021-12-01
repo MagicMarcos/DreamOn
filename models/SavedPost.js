@@ -56,8 +56,10 @@ const SavedPostSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+// defining methods and statics
 SavedPostSchema.methods.requiresNotification = function (date) {
-  console.log('requiredNofication method');
+  console.log('requiredNofication method', this.notification);
   console.log(
     'difference',
     Math.round(
@@ -100,9 +102,7 @@ SavedPostSchema.statics.sendNotifications = function (callback) {
       const options = {
         to: `+1 ${reminder.phoneNumber}`,
         from: cfg.twilioPhoneNumber,
-        /* eslint-disable max-len */
         body: `Hi ${reminder.name}. The application deadline for ${reminder.title} is coming up on ${reminder.expirationDate}. Don't miss out! Apply now from your account at dreamingon.herokuapp.com `,
-        /* eslint-enable max-len */
       };
 
       // Send the message!
@@ -123,13 +123,11 @@ SavedPostSchema.statics.sendNotifications = function (callback) {
       });
     });
 
-    // Don't wait on success/failure, just indicate all messages have been
-    // queued for delivery
+    // Don't wait on success/failure, just indicate all messages have been queued for delivery
     if (callback) {
       callback.call();
     }
   }
 };
-// PostSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 const SavedPosts = mongoose.model('SavedPost', SavedPostSchema);
 module.exports = mongoose.model('SavedPost', SavedPostSchema);

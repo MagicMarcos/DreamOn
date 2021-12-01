@@ -27,16 +27,5 @@ const CommentSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-// PostSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
-module.exports = mongoose.model('Comment', CommentSchema);
 
-// TODO - set expiration same as post
-// expireAt: {
-//   type: Date,
-//   expires: 0,
-//   required: true,
-// },
-// expirationDate: {
-//   type: String,
-//   required: true,
-// },
+module.exports = mongoose.model('Comment', CommentSchema);

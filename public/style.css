@@ -1,12 +1,28 @@
 .provider {
-  color: red;
+  color: #7949ff;
 }
 
 .student {
-  color: blue;
+  color: #ff5e5b;
 }
 
 .dacaAlert {
   width: 25px;
   height: 25px;
+}
+
+.hero {
+  height: 100px;
+  background-image: url('/img/feed-hero.png');
+  background-size: cover;
+  background-position: -19px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 150px;
+    background-image: url('/img/feed-hero.png');
+    background-size: cover;
+    background-position: -19px;
+  }
 }

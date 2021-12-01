@@ -1,4 +1,3 @@
-// TODO likely wrong path
 require('dotenv').config({ path: './config/.env' });
 
 const cfg = {};

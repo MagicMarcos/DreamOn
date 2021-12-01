@@ -4,28 +4,46 @@
   <body>
     <%- include('partials/prof-header') -%>
     <main>
-      <div class="section bg-primary text-dark section-lg">
+      <!-- Title -->
+
+      <div class="container-fluid shadow-soft border-light">
         <div class="container">
-          <!-- Title -->
           <div class="row">
-            <div class="col">
-              <h2 class="mb-5">Welcome <%= user.name%></h2>
+            <div
+              class="
+                col
+                text-center
+                hero
+                d-flex
+                justify-content-start
+                align-items-center
+              "
+            >
+              <h2 class="h1 text-soft mb-0">Welcome <%= user.name%></h2>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="section bg-primary text-dark section-lg pt-0 pb-2">
+        <div class="container">
           <!-- End of title-->
           <div class="row mb-5">
             <% posts.forEach(post => { %>
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 col-xl-4">
               <div class="card bg-primary shadow-inset border-light mb-4">
-                <div class="card-body p-5">
+                <div class="card-body main-cards p-5">
                   <div class="d-flex justify-content-between align-items-start">
-                    <a href="/post/<%= post.postId %>">
-                      <h3 class="h4 card-title mb-3"><%= post.title %></h3>
-                    </a>
+                    <!-- post title -->
+                    <div class="overflow-hidden mb-1" style="height: 31px">
+                      <a href="/post/<%= post.postId %>">
+                        <h3 class="h4 card-title mb-3"><%= post.title %></h3>
+                      </a>
+                    </div>
+
                     <%if(post.DACA){%>
                     <img
                       src="/img/daca1.png"
-                      class="dacaAlert"
+                      class="dacaAlert shadow-soft rounded-circle"
                       alt=""
                       data-toggle="tooltip"
                       data-placement="bottom"
@@ -34,7 +52,7 @@
                     <%} else{%>
                     <img
                       src="/img/daca<%=post.DACA%>.png"
-                      class="dacaAlert"
+                      class="dacaAlert shadow-soft rounded-circle"
                       alt=""
                       data-toggle="tooltip"
                       data-placement="bottom"
@@ -43,25 +61,41 @@
                     <%}%>
                   </div>
                   <span class="card-text small">
-                    <a href="/page/<%= post.postedBy %>"
+                    <a
+                      href="/page/<%= post.postedBy %> "
+                      data-toggle="tooltip"
+                      data-placement="right"
+                      title="See profile"
                       ><%= post.providerName %></a
                     >
-                    <!-- <span class="far fa-calendar-alt mr-2"></span>15 March 2020 -->
                   </span>
                   <a href="/post/<%= post.postId %>">
-                    <p class="card-text mt-4 mb-3"><%= post.caption%></p>
+                    <p
+                      class="card-text mt-3 mb-3 overflow-hidden"
+                      style="height: 50px"
+                    >
+                      <%= post.caption%>
+                    </p>
                   </a>
 
                   <div
                     class="d-flex align-items-center justify-content-between"
+                    style="height: 50px"
                   >
                     <a
                       href="/post/<%= post.postId %>"
-                      class="btn btn-primary btn-sm mr-3"
-                      >Learn More</a
+                      class="btn btn-primary btn-info btn-sm mr-3"
+                      >More</a
                     >
-                    <div class="d-flex flex-column align-items-end">
-                      <span class="card-text small"
+                    <div
+                      class="
+                        d-flex
+                        flex-row
+                        align-items-center
+                        justify-content-end
+                      "
+                    >
+                      <span class="card-text text-danger small"
                         ><span class="far fa-calendar-alt mr-2"></span>Apply by:
                         <%= post.expirationDate %></span
                       >
@@ -71,15 +105,17 @@
                         class="col-3"
                       >
                         <button
-                          class="fa fa-trash border-0 bg-transparent"
+                          role="button"
+                          class="
+                            bg-transparent
+                            btn btn-icon-only btn-pill btn-primary
+                          "
                           type="submit"
-                        ></button>
+                        >
+                          <span class="fa fa-trash color-red"></span>
+                        </button>
                       </form>
                     </div>
-
-                    <!-- <a href="#" class="small"
-                      ><span class="far fa-comments mr-2"></span>21</a
-                    > -->
                   </div>
                 </div>
               </div>

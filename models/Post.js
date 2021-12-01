@@ -47,5 +47,5 @@ const PostSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-// PostSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
+
 module.exports = mongoose.model('Post', PostSchema);
