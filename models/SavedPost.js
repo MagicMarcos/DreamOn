@@ -61,6 +61,7 @@ const SavedPostSchema = new mongoose.Schema({
 SavedPostSchema.methods.requiresNotification = function (date) {
   console.log('requiredNofication method', this.notification);
   console.log('current date param', date)
+  console.log('this.time', this.time)
   console.log(
     'difference',
     Math.round(
