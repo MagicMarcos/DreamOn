@@ -112,7 +112,9 @@
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"
-                              ><span class="fas fa-unlock-alt text-danger"></span
+                              ><span
+                                class="fas fa-unlock-alt text-danger"
+                              ></span
                             ></span>
                           </div>
                           <input
@@ -144,12 +146,31 @@
                       mt-4
                     "
                   >
-                    <span class="font-weight-normal">
-                      Already have an account?
-                      <a href="/login" class="font-weight-bold color-green"
-                        >Login here</a
-                      >
-                    </span>
+                    <div class="d-flex flex-column">
+                      <span class="font-weight-normal mb-2">
+                        Already have an account?
+                        <a href="/login" class="font-weight-bold color-green"
+                          >Login here</a
+                        >
+                      </span>
+
+                      <span class="font-weight-normal">
+                        Why do you need my phone number?
+                        <i
+                          class="
+                            far
+                            fa-question-circle
+                            shadow-soft
+                            border-light
+                            rounded-circle
+                            ml-2
+                          "
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="We send you a text reminder two weeks prior to your saved scholarships deadline."
+                        ></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -158,20 +179,7 @@
         </div>
       </section>
     </main>
-    <!-- <footer>
-      <div class="myLinks">
-        <a href="https://github.com/MagicMarcos"
-          ><i class="fab fa-github"></i
-        ></a>
-        <a href="https://marcoscardoso.netlify.app/"
-          ><i class="fas fa-laptop-code"></i
-        ></a>
-        <a href="https://twitter.com/home"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/feed/"
-          ><i class="fab fa-linkedin-in"></i
-        ></a>
-      </div>
-    </footer> -->
+
     <%- include('partials/scripts') -%>
   </body>
 </html>

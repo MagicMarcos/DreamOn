@@ -3,115 +3,318 @@
   <%- include('partials/head') -%>
   <body>
     <%- include('partials/l-headers') -%>
+
     <main>
-            <div class="container-fluid shadow-soft  border-light ">
+      <div class="container-fluid shadow-soft border-light">
         <div class="container">
           <div class="row">
-          <div class="col text-center hero d-flex justify-content-start align-items-center">
-             
-            <h2 class="h1 text-soft mb-0">Welcome Dreamers</h2>
-              
+            <div
+              class="
+                col
+                text-center
+                hero
+                d-flex
+                justify-content-start
+                align-items-center
+              "
+            >
+              <h2 class="h1 text-soft mb-0">Welcome Dreamers</h2>
             </div>
-            </div>
+          </div>
         </div>
       </div>
-           <section class="section section-lg pt-5 pb-2">
-            <div class="container">
-                <div class="row align-items-center justify-content-around">
-                    <div class="col-md-6 col-xl-6 mb-5">
-                        <div class="card bg-primary shadow-soft border-light organic-radius p-3">
-                            <img class="organic-radius img-fluid" src="img/dream-display.png" alt="modern desk">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-5 text-center text-md-left">
-                        <h2 class="h1 mb-4">Harness the power of AI to find Scholarships</h2>
-                        <p class="lead">Deferred Action for Childhood Arrivals (DACA) is a program that grants work permits and immigratory relief for children who would otherwise be undocumented in this country.</p>
-                        <p class="lead">Due to their status, finding financial aid and scholarships is not always simple. DreamOn seeks to facilitate this process with the help of AI.</p>
-                        <p class="lead">Sign up as a student or provider and DreamOn.</p>
-                    </div>
-                </div>
+      <section class="section section-lg pt-5 pb-2">
+        <div class="container">
+          <div class="row align-items-center justify-content-around">
+            <div class="col-md-6 col-xl-6 mb-5">
+              <div
+                class="
+                  card
+                  bg-primary
+                  shadow-soft
+                  border-light
+                  organic-radius
+                  p-3
+                "
+              >
+                <img
+                  class="organic-radius img-fluid"
+                  src="img/dream-display.png"
+                  alt="modern desk"
+                />
+              </div>
             </div>
-        </section>
-      <!-- <div
-        class="
-          section-header
-          pt-0
-          pb-6
-          bg-primary
-          overflow-hidden
-          text-center
-          border-light
-        "
-      ></div> -->
+            <div class="col-md-6 col-xl-5 text-center text-md-left">
+              <h2 class="h1 mb-4">
+                Harness the power of AI to find Scholarships
+              </h2>
+              <p class="lead">
+                Deferred Action for Childhood Arrivals (DACA) is a program that
+                grants work permits and immigratory relief for children who
+                would otherwise be undocumented in this country.
+              </p>
+              <p class="lead">
+                Due to their status, finding financial aid and scholarships is
+                not always simple. DreamOn seeks to facilitate this process with
+                the help of AI.
+              </p>
+              <p class="lead">
+                This is a community driven platform so sign up as a student or
+                provider and DreamOn!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div class="section section-lg pt-5 pb-2" id="signup">
         <div class="container">
-          <div class="col-12">
-            <div
-              class="
-                card
-                bg-primary
-                shadow-soft
-                border-light
-                px-4
-                py-5
-                text-center
-                mb-5
-              "
-            >
-              <div class="card-header  pb-0">
-                <h2 class="h1 mb-3">Are you a Student or Provider?</h2>
-              </div>
-              <div class="card-body pt-2 px-0 px-lg-7">
-               
-                <a
-                  class="btn btn-lg btn-primary rounded mr-md-4 mb-3 mb-sm-0"
-                  href="/student-signup"
-                >
-                  <div class="d-flex align-items-center">
-                    <span class="icon icon-lg mr-3"
-                      ><span class="fas fa-user-graduate color-purple"></span
-                    ></span>
-                    <div class="d-block text-left">
-                      <div class="h5 mb-0">Students</div>
-                      <small class="font-small">search scholarships</small>
-                    </div>
-                  </div>
-                </a>
-                <a class="btn btn-lg btn-primary rounded mt-3 mt-md-0" href="/signup">
-                  <div class="d-flex align-items-center">
-                    <span class="icon icon-lg mr-3"
-                      ><span class="fas fa-user color-rose"></span
-                    ></span>
-                    <div class="d-block text-left">
-                      <div class="h5 mb-0">Providers</div>
-                      <small class="font-small">upload scholarships</small>
-                    </div>
-                  </div>
-                </a>
-              </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
               <div
                 class="
-                  d-block d-sm-flex
-                  justify-content-center
-                  align-items-center
-                  mt-4
+                  card
+                  bg-primary
+                  shadow-inset
+                  border-light
+                  px-4
+                  py-5
+                  text-center
+                  mb-5
                 "
               >
-                <span class="font-weight-normal">
-                  Already have an account?
-                  <a href="/login" class="font-weight-bold color-green"
-                    >Login here</a
+                <div class="card-header pb-0">
+                  <h2 class="h1 mb-3">Are you a Student or Provider?</h2>
+                </div>
+                <div class="card-body pt-2 px-0 px-lg-7">
+                  <a
+                    class="btn btn-lg btn-primary rounded mr-md-4 mb-3 mb-sm-0"
+                    href="/student-signup"
                   >
-                </span>
+                    <div class="d-flex align-items-center">
+                      <span class="icon icon-lg mr-3"
+                        ><span class="fas fa-user-graduate color-purple"></span
+                      ></span>
+                      <div class="d-block text-left">
+                        <div class="h5 mb-0">Students</div>
+                        <small class="font-small">search scholarships</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    class="btn btn-lg btn-primary rounded mt-3 mt-md-0"
+                    href="/signup"
+                  >
+                    <div class="d-flex align-items-center">
+                      <span class="icon icon-lg mr-3"
+                        ><span class="fas fa-user color-rose"></span
+                      ></span>
+                      <div class="d-block text-left">
+                        <div class="h5 mb-0">Providers</div>
+                        <small class="font-small">upload scholarships</small>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="
+                    d-block d-flex
+                    flex-column
+                    justify-content-center
+                    align-items-center
+                    mt-4
+                  "
+                >
+                  <span class="font-weight-normal mb-1">
+                    Already have an account?
+                    <a href="/login" class="font-weight-bold color-green"
+                      >Login here</a
+                    >
+                  </span>
+                  <span class="font-weight-normal">
+                    If you have any questions, please refer to our
+                    <a href="#FAQ" class="color-green font-weight-bold">FAQ</a>.
+                  </span>
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <div class="my-5">
+                <span class="h5 text-center" id="FAQ">FAQ</span>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+              <!--Accordion-->
+              <div class="accordion shadow-soft rounded" id="accordionExample1">
+                <div
+                  class="card card-sm card-body bg-primary border-light mb-0"
+                >
+                  <a
+                    href="#panel-4"
+                    data-target="#panel-4"
+                    class="accordion-panel-header"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="panel-1"
+                  >
+                    <span class="h6 mb-0 font-weight-bold"
+                      >What is this application all about?</span
+                    >
+                    <span class="icon"><span class="fas fa-plus"></span></span>
+                  </a>
+                  <div class="collapse" id="panel-4">
+                    <div class="pt-3">
+                      <p class="">
+                        DreamOn is a community driven platform focused on
+                        finding scholarships for DACA recipients.
+                      </p>
+                      <p class="mb-0">
+                        Users can sign up as students or providers and engage as
+                        a community to help folks achieve their dreams. Student
+                        accounts can save scholarships and receive text
+                        reminders. Providers can submit scholarships to our
+                        database. These scholarships are scanned by AI to
+                        determine whether they are friendly towards DACA
+                        recipients or not.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card card-sm card-body bg-primary border-light mb-0"
+                >
+                  <a
+                    href="#panel-1"
+                    data-target="#panel-1"
+                    class="accordion-panel-header"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="panel-1"
+                  >
+                    <span class="h6 mb-0 font-weight-bold"
+                      >I'm not a DACA recipient. Can I use this app?</span
+                    >
+                    <span class="icon"><span class="fas fa-plus"></span></span>
+                  </a>
+                  <div class="collapse" id="panel-1">
+                    <div class="pt-3">
+                      <p>
+                        The short answer is Yes! DreamOn is a community driven
+                        platform. I want folks from all walks of life to get
+                        together and not just upload and browse scholarships.
+                        But also discuss and share resources in how to succeed.
+                      </p>
+                      <p class="mb-0">
+                        In the future, I see this platform being scaled up so
+                        that users can use AI to find scholarships for all
+                        needs. Ultimately, I want to help people achieve their
+                        dreams.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card card-sm card-body bg-primary border-light mb-0"
+                >
+                  <a
+                    href="#panel-2"
+                    data-target="#panel-2"
+                    class="accordion-panel-header"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="panel-1"
+                  >
+                    <span class="h6 mb-0 font-weight-bold"
+                      >Why can't I upload pdfs?</span
+                    >
+                    <span class="icon"><span class="fas fa-plus"></span></span>
+                  </a>
+                  <div class="collapse" id="panel-2">
+                    <div class="pt-3">
+                      <p class="mb-0">
+                        At the moment I use a storage service named Cloudinary.
+                        The current account tier we have does not support pdfs.
+                        However, I am working on adding this functionality in
+                        the near future.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card card-sm card-body bg-primary border-light mb-0"
+                >
+                  <a
+                    href="#panel-3"
+                    data-target="#panel-3"
+                    class="accordion-panel-header"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="panel-1"
+                  >
+                    <span class="h6 mb-0 font-weight-bold"
+                      >I haven't received my text reminder. What gives?</span
+                    >
+                    <span class="icon"><span class="fas fa-plus"></span></span>
+                  </a>
+                  <div class="collapse" id="panel-3">
+                    <div class="pt-3">
+                      <p class="mb-0">
+                        Currently, DreamOns messaging service is limited in its
+                        reach. Apologies for this inconvenience.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card card-sm card-body bg-primary border-light">
+                  <a
+                    href="#panel-5"
+                    data-target="#panel-5"
+                    class="accordion-panel-header"
+                    data-toggle="collapse"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="panel-1"
+                  >
+                    <span class="h6 mb-0 font-weight-bold"
+                      >I believe the AI may have made a mistake.</span
+                    >
+                    <span class="icon"><span class="fas fa-plus"></span></span>
+                  </a>
+                  <div class="collapse" id="panel-5">
+                    <div class="pt-3">
+                      <p>
+                        Congratulations! You likely discovered an edge case that
+                        I have not.
+                      </p>
+                      <p class="mb-0">
+                        Feel free to contact me
+                        <a
+                          href="https://marcoscardoso.netlify.app"
+                          class="font-weight-bold"
+                          >here</a
+                        >
+                        with the link to the scholarship so that I can continue
+                        to improve this platform.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--End of Accordion-->
             </div>
           </div>
         </div>
       </div>
     </main>
-
-    <%- include('partials/footer') -%>
-    <%- include('partials/scripts') -%>
+    <%- include('partials/footer') -%> <%- include('partials/scripts') -%>
   </body>
 </html>
