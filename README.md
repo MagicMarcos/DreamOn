@@ -6,21 +6,21 @@
 ## How It's Made:
 
 ### Utilized: 
-    <ul> 
-        <li>JavaScript</li>
-        <li>Node: server / back-end</li>
-        <li>Express:server / back-end</li>
-        <li>EJS: templating</li>
-        <li>CSS: styling</li>
-        <li>Bootstrap 5: styling</li>
-        <li>MongoDB: database</li>
-        <li>Mongoose: schemas</li>
-        <li>Passport: authentication</li>
-        <li>Microsoft Azure AI Computer Vision: determines scholarships status </li>
-        <li>Twilio: text reminders</li>
-        <li>Heroku: hosting</li>
-        <li>Cloudinary: image hosting </li>
-    </ul>
+     
+       JavaScript
+       Node: server / back-end
+       Express:server / back-end
+       EJS: templating
+       CSS: styling
+       Bootstrap 5: styling
+       MongoDB: database
+       Mongoose: schemas
+       Passport: authentication
+       Microsoft Azure AI Computer Vision: determines scholarships status 
+       Twilio: text reminders</li>
+       Heroku: hosting</li>
+       Cloudinary: image hosting 
+    
     
 ### Reflections and Description: 
 <p>This was a project I held near and dear to my heart, as a DACA recipient who struggled to find financial aid when going to college.</p> 
