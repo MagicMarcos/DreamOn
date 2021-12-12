@@ -3,27 +3,26 @@
 <p> A platform focused on finding scholarships for DACA recipients.</p>
 <p> See it live at <a href="https://dreamingon.herokuapp.com">DreamOn</a> </p>
 
-## Previews
-![Home Page](https://res.cloudinary.com/codechella/image/upload/v1639339487/dreamOn-home_tlhcjr.png)
-
-![Feed Page](https://res.cloudinary.com/codechella/image/upload/v1639339476/dreamon-feed_qbeqaf.png)
-
 ## How It's Made:
 
 ### Utilized: 
     <ul> 
         <li>JavaScript</li>
-        <li>Node</li>
-        <li>Express</li>
-        <li>EJS</li>
-        <li>CSS</li>
-        <li>Bootstrap 5</li>
-        <li>MongoDB</li>
-        <li>Mongoose</li>
-        <li>Passport</li>
-        <li>Microsoft Azure AI Computer Vision</li>
-        <li>Twilio</li>
+        <li>Node: server / back-end</li>
+        <li>Express:server / back-end</li>
+        <li>EJS: templating</li>
+        <li>CSS: styling</li>
+        <li>Bootstrap 5: styling</li>
+        <li>MongoDB: database</li>
+        <li>Mongoose: schemas</li>
+        <li>Passport: authentication</li>
+        <li>Microsoft Azure AI Computer Vision: determines scholarships status </li>
+        <li>Twilio: text reminders</li>
+        <li>Heroku: hosting</li>
+        <li>Cloudinary: image hosting </li>
     </ul>
+    
+### Reflections and Description: 
 <p>This was a project I held near and dear to my heart, as a DACA recipient who struggled to find financial aid when going to college.</p> 
 <p>Users are able to sign up / log in as either a provider or a student. Providers can upload scholarships while students can browse and save scholarships.<p/>
 <p>Scholarships will be automatically deleted upon apply by date, although users have the freedom to delete them individually. Additionally, users can comment on scholarships and students will receive text notifications a week before the due date.<p/>
@@ -44,6 +43,14 @@
         <li>Currently Cloudinary is a free account, thus limiting submissions to images only (no pdfs) </li> 
         <li>Currently Twilio is a free account, thus limiting phone numbers to your individual number </li>
     </ul>
+
+### Errors and Bugs 
+<p>If something behaves unexpectedly, it is likely a bug. Create an issue and report it <a href="https://github.com/MagicMarcos/DreamOn/issues">here</a>  </p>
+
+## Previews
+![Home Page](https://res.cloudinary.com/codechella/image/upload/v1639339487/dreamOn-home_tlhcjr.png)
+
+![Feed Page](https://res.cloudinary.com/codechella/image/upload/v1639339476/dreamon-feed_qbeqaf.png)
 
 ## HOW TO RUN THIS LOCALLY
 
