@@ -17,9 +17,10 @@
        Mongoose: schemas
        Passport: authentication
        Microsoft Azure AI Computer Vision: determines scholarships status 
-       Twilio: text reminders</li>
-       Heroku: hosting</li>
+       Twilio: text reminders
+       Heroku: hosting
        Cloudinary: image hosting 
+       MVC design pattern
     
     
 ### Reflections and Description: 
