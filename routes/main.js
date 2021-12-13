@@ -12,7 +12,6 @@ router.get('/', homeController.getIndex);
 router.get('/provider-profile', ensureAuth, postsController.getProfile);
 // student profile
 router.get('/student-profile', ensureAuth, postsController.getStudentProfile);
-
 // post page
 router.get('/make-post', ensureAuth, postsController.getMakePost);
 // signup check
@@ -30,7 +29,6 @@ router.get('/student-signup', authController.getStudentSignup);
 router.post('/student-signup', authController.postStudentSignup);
 
 // feed
-router.get('/feed', ensureAuth,  postsController.getFeed);
-
+router.get('/feed', ensureAuth, postsController.getFeed);
 
 module.exports = router;

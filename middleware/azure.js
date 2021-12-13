@@ -76,7 +76,6 @@ const azureAi = async brandURLImage => {
   const resultingArr = check.lines;
   resultingArr.forEach(line => {
     if (line.text.includes('DACA')) {
-      console.log('DACAFOUND!');
       DACA = 1;
     }
   });

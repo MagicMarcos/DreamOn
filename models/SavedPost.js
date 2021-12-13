@@ -59,11 +59,6 @@ const SavedPostSchema = new mongoose.Schema({
 
 // defining methods and statics
 SavedPostSchema.methods.requiresNotification = function (date) {
-  console.log(this.title)
-  console.log('requiredNofication method', this.notification);
-  console.log('current date param', date)
-  console.log('this.time', this.time)
-  
   console.log(
     'difference',
     Math.round(
@@ -74,17 +69,16 @@ SavedPostSchema.methods.requiresNotification = function (date) {
   );
 
   // !demo purposes only
-  return this.notification === 5
+  // return this.notification === 5;
 
   //!production code
-  // return (
-  //   Math.round(
-  //     moment
-  //       .duration(moment(this.time).utc().diff(moment(date).utc()))
-  //       .asMinutes()
-  //   ) === this.notification
-  // );
-  
+  return (
+    Math.round(
+      moment
+        .duration(moment(this.time).utc().diff(moment(date).utc()))
+        .asMinutes()
+    ) === this.notification
+  );
 };
 SavedPostSchema.statics.sendNotifications = function (callback) {
   // now
@@ -118,7 +112,6 @@ SavedPostSchema.statics.sendNotifications = function (callback) {
       // Send the message!
       client.messages.create(options, function (err, response) {
         if (err) {
-          // Just log it for now
           console.error(err);
         } else {
           // Log the last few digits of a phone number

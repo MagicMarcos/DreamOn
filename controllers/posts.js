@@ -13,8 +13,8 @@ const cfg = require('../config/twilio');
 const moment = require('moment');
 
 module.exports = {
-  // !feed 
-    getFeed: async (req, res) => {
+  // !feed
+  getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
       res.render('feed.ejs', { user: req.user, posts: posts });
@@ -61,7 +61,6 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({ postId: req.params.id });
-      // todo comments
       res.render('post.ejs', {
         post: post,
         comments: comments,
@@ -127,8 +126,8 @@ module.exports = {
       const name = req.user.name;
       // *other phone numbers not supported with current twilio account
       const phoneNumber = req.user.phoneNumber;
-      // *one week in minutes (app alerts users 1 week before due date) -> not being used for demo day
-      const notification = 10080;
+      // *one month in minutes (app alerts users 1 month before due date) -> not being used in demos
+      const notification = 41280;
       const postId = req.body.postId;
       const providerName = req.body.providerName;
       const postedBy = req.body.postedBy;
@@ -150,7 +149,7 @@ module.exports = {
         name: name,
         // *other phone numbers not supported with current twilio account
         phoneNumber: cfg.phoneNum,
-    
+
         notification: notification,
         time: time,
         scholarshipLink: scholarshipLink,
